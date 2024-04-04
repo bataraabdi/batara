@@ -1,0 +1,74 @@
+Sebelum Pakai Srikandi
+Bismillah.
+📌 Disclaimer : 
+- Tulisan ini tidak wajib diikuti atau setuju dengan tulisan ini
+- Ini berdasarkan pengalaman kami
+
+Wajib diketahui sebelum pakai aplikasi Srikandi.
+Srikandi aplikasi php berbasis web dgn framework laravel, dimana aplikasi ini ada didalam hosting & domain sebagai alamatnya.
+
+Sepengetahuan kami jika laravel 8 keatas banyak teknologi yg digunakan, maka browser yang kita miliki juga harus memenuhi kebutuhan seluruh plugin yg dibutuhkan oleh framework laravel tersebut, sederhananya seperti itu.
+
+Defaultnya browser membutuhkan izin untuk menjalankan script dari luar browser (pihak ketiga, dalam hal ini srikandi), diantaranya : Javasript, Popup, Pdf reader/view, Cookies, Cache, dll (banyak lagi), 
+Cth: script pada halaman login : <noscript>You need to enable JavaScript to run this app.</noscript>
+
+Semua izin2 tdk bisa berjalan otomatis di semua browser karena hak mengizinkan block & allow itu harus izin pengguna browser.
+
+1. Browser yg kita gunakan akan berdampak terhadap aktivitas di srikandi, secara aplikasi jika error (cth: tdk bisa login, krn ada serangan DDos atau cracker, Server limited, server down, nah klo ini akan dialami semua pengguna srikandi, tapi klo error tertentu (butuh ditinjau dulu), maka kita tidak bisa salahkan aplikasinya, padahal bisa jadi hanya dibrowser kita, yg blm update, atau cache dibrowser kita yg sdh menumpuk ratusan mega sehingga mengganggu semua web yg kita buka. Hal ini jarang di ketahui karena kita hanya sebagai pemakai saja.
+
+Case :
+Kita pernah temui tombol KIRIM NASKAH tidak tampil, namun saat saya minta izin utk login, yang ada di browser saya justru terlihat, kemudian saya screenshoot sebagai bukti otentik kepada penanya. Kemudian kami sarankan utk melakukan aksi yg kami ajarkan. 
+Dan kami yakin bahwa kesalahan itu bukan dari aplikasi tapi : Browser, kenapa ? Karena di browser saya bisa, dan browser penanya tidak bisa. Artinya selidiki dulu.
+
+Namun beberapa memang masih ditemukan bug di srikandi, ini wajar di aplikasi & biasa terjadi. Semua aplikasi seperti itu. Kami faham bagaimana depelover itu siang malam terus menambal celah setiap script, mungkin bapak/ibu tidur ya klo malam, yg kami ketahui para programer itu justru ga tidur malam, hehe, disitu mereka nyaman kerja krn sunyi & tenang. Yg programer mungkin bisa senyum2 tuh.
+
+2. Kami saat ini menyarankan kepada OPD kami menggunakan Browser Firefox (bukan iklan, bukan menuduh browser lain tdk bagus) klo saya pribadi pakai firefox & brave. Di laptop saya ada 3 browser berbeda.
+
+3. Setting Browser : Allow pada > Site Setting dibrowser : Javasript, Popup, Cookies, Pdf view/reader, atau aktifkan extension pdf reader jika : chrome.
+Ini yg paling banyak digunakan di srikadi.
+Jika ada notifikasi izin maka klik izinkan, agar seterusnya pada link srikandi.arsip.go.id saat load script maka browser yg kita pakai sdh langsung RUN tanpa di block.
+
+4. Cookies, cache
+Apa itu cookies ? 
+Baca disini : https://www.niagahoster.co.id/blog/cookies-adalah/
+
+Apa itu cache ?
+Baca disini :
+https://eraspace.com/artikel/post/kenali-apa-itu-cache-browser-sebelum-yakin-menghapusnya
+
+Cara membersihkan cache & cookies di browser : 
+Baca disini :
+https://www.hostinger.co.id/tutorial/cara-menghapus-cache-history-di-browser
+
+
+Jika sudah dibaca silahkan lanjutkan,
+Kita bisa temukan di srikandi pada : menu dropdown search autocomplate > nama dinas tidak muncul, nama pengguna tdk muncul, padahal sdh di edit/perbarui, TTE salah padahal Key benar. Ini karena cookies & cache, dan banyak effect dari cache & cookies.
+
+5. Clear History
+Srikandi mengharuskan selalu melakukan clear history agar aktivitas kerja menjadi selalu terkini data yg diterima langsung dari script web & database, bukan dari cache. Cara clear history banyak tutorial di youtube, silahkan searching.
+
+6. Optimal Browser 
+Gunakan software pengoptimal OS & browser, ini berpengaruh karena informasi & data yg tidak penting menumpuk disini.
+Kami saat ini menyarakan menggunakan CCleaner, utk install dan penggunaan bisa lihat di Youtube.
+untuk unduh disini : https://www.ccleaner.com
+Cara menggunakan : https://www.youtube.com/watch?v=QgeXL89S1YY 
+
+Inti tulisan diatas adalah :
+- Browser yg terupdate dgn Firefox
+- Pada Browser selalu "Allow" : Javasript, Popup, Cookies, Pdf view/reader
+- Selalu clear history 1 hari sekali atau saat pakai srikandi
+- Pakai Ccleaner atau GlaryUtility untuk tambahan pembersihan cookies, cache, file temporary internet.
+Untuk tutorial, instalasi, penggunaan dan informasi tambahan silahkan searching di google. 
+
+Implementasi Browser & Ccleaner 
+- Ketika ada yang tidak kelihatan pada tombol, textbox, atau error maka :
+- Clear Cache, Cookies, History 
+- Login ulang
+- Pada Ccleaner lalukan pembersihan minimal 1 atau 7 hari sekali.
+
+
+Jika semua dilakukan masih error di srikandi, bisa ke asumsi : server lemot sehingga tdk bisa load database, outlimited, kena malware, serangan cracker dan lain2. Hal ini yg awal kami sampaikan ke OPD agar kami tdk terlalu banyak pertanyaan eror, saat ini pertanyaan cuma teknis penggunaan srikandi, cth, unit kerja & pejabat blm masuk.
+
+Maaf tulisannya panjang, semoga bisa difahami.
+Semoga bermanfaat. 
+Barakallahu fiikum.
