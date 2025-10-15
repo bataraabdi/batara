@@ -1,57 +1,690 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>batara</title>
-  <!--  -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/demo.css">
-  <link rel="stylesheet" href="css/templatemo-style.css">
-  <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon" />
-  <script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batara - Digital Creator</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #FFA500;
+            --accent-color: #FF8C00;
+            --dark-color: #121212;
+            --darker-color: #0a0a0a;
+            --light-color: #f8f9fa;
+            --gray-color: #a1a1aa;
+            --border-color: #2a2a2a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--darker-color);
+            color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        /* Canvas Background */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        canvas {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        
+        .hero-content {
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #FFD700, #FFA500, #FF8C00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+    }
+
+.section-title h2 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #FFD700, #FFA500, #FF8C00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+        
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--gray-color);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .tagline {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--gray-color);
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none !important; /* Remove underline */
+        }
+        
+        .social-links a:hover {
+            border-color: var(--primary-color);
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-color);
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+        }
+        
+        .btn-explore:hover {
+            color: var(--primary-color);
+            text-decoration: none; /* Ensure no underline on hover */
+        }
+        
+        .btn-explore i {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-explore:hover i {
+            transform: translateY(3px);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #FFD700, #FFA500, #FF8C00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--gray-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        .service-features li:before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .floating-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .floating-2 {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        .floating-3 {
+            width: 40px;
+            height: 40px;
+            bottom: 25%;
+            left: 15%;
+            animation: float 12s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+        
+        .floating-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            right: 10%;
+            animation: float 9s ease-in-out infinite;
+            animation-delay: 6s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            color: var(--gray-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .floating-element {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-		<div id="particles-js"></div>	
-			<ul class="cb-slideshow">
-	            <li></li>
-	            <li></li>
-	            <li></li>
-	            <li></li>
-	        </ul>
-			<div class="container-fluid">
-				<div class="row cb-slideshow-text-container ">
-					<div class= "tm-content col-xl-6 col-sm-8 col-xs-8 ml-auto section">
-					<header class="mb-5"><h1>Batara</h1></header>
-					<P class="mb-5">
-						<div class="typewriter">
-							<p id="text">Building Blog, Web Static/Portofolio, SEO, Customize And Optimize Social Media, Design Graphic
-							</p>
-						</div>
-					</p>		
-                    <form action="#" method="get" class="subscribe-form">
-               	    	<div class="row form-section">
-							<div class="col-md-7 col-sm-7 col-xs-7">
-			                      <p class="mb-5"> </p>CRAFTED BY GNU/LINUX 
-				  			</div>
-						</div>
-                    </form>alif.tara@gmail.com</br>
-					<div class="tm-social-icons-container text-xs-center">
-	                    <a href="https://www.facebook.com/bataraabdi" class="tm-social-link"><i class="fa fa-facebook"></i></a>
-	                    <a href="https://telegram.me/aliftara" class="tm-social-link"><i class="fa fa-paper-plane"></i></a>
-	                    <a href="mailto:alif.tara@gmail.com" class="tm-social-link"><i class="fa fa-envelope-square"></i></a>
-	                </div>
-				</div>
-			</div>	
-			<div class="footer-link"> 
-				<p></p>
-			</div>
-		</div>	
-	</body>
-	<script type="text/javascript" src="js/particles.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+    <!-- Canvas Background -->
+    <div id="canvas-container">
+        <canvas id="animation-canvas"></canvas>
+    </div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-element floating-1"></div>
+    <div class="floating-element floating-2"></div>
+    <div class="floating-element floating-3"></div>
+    <div class="floating-element floating-4"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <div class="hero-content">
+                        <h1>Batara</h1>
+                        <p>Building Blog, Web Static/Portfolio, SEO, Customize And Optimize Social Media, Design Graphic</p>
+                        <div class="tagline">
+                            <span>CRAFTED BY GNU/LINUX</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://wa.me/6285359090206" target="_blank" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://telegram.me/aliftara" target="_blank" title="LinkedIn">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="mailto:alif.tara@gmail.com" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                        <a href="#services" class="btn-explore">
+                            <span>Explore Services</span>
+                            <i class="fas fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Services</h2>
+                <p>Solusi digital terpadu untuk meningkatkan citra online dan pertumbuhan bisnis Anda</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Membangun situs dan aplikasi web modern yang responsif dengan teknologi terkini.</p>
+                        <ul class="service-features">
+                            <li>Blogspot</li>
+                            <li>Wordpress</li>
+                            <li>Web Static</li>
+                            <li>Portofolio</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>SEO Optimization</h3>
+                        <p>Meningkatkan visibilitas dan pertumbuhan trafik organik situs Anda.</p>
+                        <ul class="service-features">
+                            <li>Technical SEO</li>
+                            <li>Content Strategy</li>
+                            <li>Performance Optimization</li>
+                            <li>Analytics Setup</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Graphic Design</h3>
+                        <p>Menciptakan identitas visual dan pemasaran yang memikat untuk brand Anda.</p>
+                        <ul class="service-features">
+                            <li>Logo Design</li>
+                            <li>Brand Identity</li>
+                            <li>Marketing Materials</li>
+                            <li>Flyer Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Social Media</h3>
+                        <p>Mengoptimalkan media sosial Anda agar jangkauan dan interaksi maksimal.</p>
+                        <ul class="service-features">
+                            <li>Content Strategy</li>
+                            <li>Profile Optimization</li>
+                            <li>Analytics Tracking</li>
+                            <li>Brand Consistency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Batara. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+ <script>
+    $(document).ready(function() {
+        // Canvas setup
+        const canvas = document.getElementById('animation-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas to full window size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Particle system
+        let particles = [];
+        const particleCount = 80;
+        let animationId;
+        
+        // Mouse position
+        const mouse = {
+            x: canvas.width / 2,
+            y: canvas.height / 2
+        };
+        
+        canvas.addEventListener('mousemove', function(event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+        
+        // Particle class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = `rgba(${Math.floor(Math.random() * 50 + 200)}, 
+                                  ${Math.floor(Math.random() * 150 + 100)}, 
+                                  ${Math.floor(Math.random() * 50)}, 
+                                  ${Math.random() * 0.5 + 0.1})`;
+                this.originalSize = this.size;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                
+                // Mouse interaction
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    this.size = this.originalSize * 2;
+                    const forceDirectionX = dx / distance;
+                    const forceDirectionY = dy / distance;
+                    const force = (100 - distance) / 100;
+                    
+                    this.x -= forceDirectionX * force * 2;
+                    this.y -= forceDirectionY * force * 2;
+                } else {
+                    this.size = this.originalSize;
+                }
+            }
+            
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Initialize particles
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        initParticles();
+        
+        // Animation loop
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Connect particles with lines
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255, 215, 0, ${0.1 * (1 - distance/120)})`;
+                        ctx.lineWidth = 0.3;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Custom easing function for ultra-smooth scrolling
+        jQuery.easing.smoothEase = function (x, t, b, c, d) {
+            return -c * (t /= d) * (t - 2) + b;
+        };
+        
+        // Ultra smooth scroll to services
+        $('.btn-explore').on('click', function(e) {
+            e.preventDefault();
+            
+            const servicesSection = $('#services');
+            if (servicesSection.length) {
+                $('html, body').animate(
+                    {
+                        scrollTop: servicesSection.offset().top - 80,
+                    },
+                    100, // Slightly longer duration for smoother effect
+                    'smoothEase' // Using our custom easing
+                );
+            }
+        });
+        
+        // Smooth scrolling for other anchor links
+        $('a[href*="#"]').not('.btn-explore').on('click', function(e) {
+            // Skip if it's not an internal link
+            if (location.pathname.replace(/^\//, '') !== this.pathname.replace(/^\//, '') || 
+                location.hostname !== this.hostname) {
+                return;
+            }
+            
+            e.preventDefault();
+            
+            const target = $(this.hash);
+            const targetElement = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            
+            if (targetElement.length) {
+                $('html, body').animate(
+                    {
+                        scrollTop: targetElement.offset().top - 80,
+                    },
+                    600,
+                    'smoothEase'
+                );
+            }
+        });
+        
+        // Enhanced scroll animation for service cards
+        function checkScroll() {
+            const serviceCards = $('.service-card');
+            const windowHeight = $(window).height();
+            const scrollTop = $(window).scrollTop();
+            
+            serviceCards.each(function(index) {
+                const cardTop = $(this).offset().top;
+                
+                if (cardTop < scrollTop + windowHeight - 100) {
+                    setTimeout(() => {
+                        $(this).addClass('visible');
+                    }, index * 150);
+                }
+            });
+        }
+        
+        // Initial check on page load
+        setTimeout(checkScroll, 500);
+        
+        // Check on scroll with throttling for performance
+        let scrollTimeout;
+        $(window).on('scroll', function() {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(function() {
+                    checkScroll();
+                    scrollTimeout = null;
+                }, 50);
+            }
+        });
+    });
+</script>
+</body>
 </html>
