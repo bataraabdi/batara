@@ -3,3 +3,26 @@ php_value mbstring.http_input auto
 php_value date.timezone Asia/Jakarta
 #Alternate default index page
 DirectoryIndex index.html
+
+
+<FilesMatch "\.(env|sql|bak|htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# VINODA SECURITY SHIELD
+<IfModule mod_headers.c>
+    Header always set x-frame-options "SAMEORIGIN"
+    Header always set x-xss-protection "1; mode=block"
+    Header always set x-content-type-options "nosniff"
+    Header always set strict-transport-security "max-age=31536000"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteCond %{REQUEST_URI} .(login|wp-login|admin|auth)\.php [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bataraabdi.my.id [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+Options -Indexes
