@@ -5,24 +5,66 @@ php_value date.timezone Asia/Jakarta
 DirectoryIndex index.html
 
 
-<FilesMatch "\.(env|sql|bak|htaccess)$">
-    Order allow,deny
-    Deny from all
+############################################
+# BATARAABDI SECURITY HARDENING
+############################################
+
+# 1. Matikan directory listing
+Options -Indexes
+
+# 2. Lindungi file konfigurasi & sensitif
+<FilesMatch "\.(env|ini|log|conf|sql|bak|old|sh|yml|yaml|json|htaccess|htpasswd)$">
+    Require all denied
 </FilesMatch>
 
-# VINODA SECURITY SHIELD
+# 3. Lindungi folder sistem (jika ada)
+<DirectoryMatch "^/.*/(\.git|\.svn|\.hg|config|backup|logs)/">
+    Require all denied
+</DirectoryMatch>
+
+# 4. Security Headers
 <IfModule mod_headers.c>
-    Header always set x-frame-options "SAMEORIGIN"
-    Header always set x-xss-protection "1; mode=block"
-    Header always set x-content-type-options "nosniff"
-    Header always set strict-transport-security "max-age=31536000"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 </IfModule>
 
+# 5. Paksa HTTPS
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 6. Blokir akses ke login/admin dari luar domain (anti brute force)
+<IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_METHOD} POST
-    RewriteCond %{REQUEST_URI} .(login|wp-login|admin|auth)\.php [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bataraabdi.my.id [NC]
+    RewriteCond %{REQUEST_URI} (login|wp-login|admin|auth)\.php [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bataraabdi\.my\.id [NC]
     RewriteRule .* - [F,L]
 </IfModule>
-Options -Indexes
+
+# 7. Blokir metode HTTP berbahaya
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK|DEBUG) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# 8. Proteksi file PHP di folder upload (jika ada)
+<DirectoryMatch "/uploads/">
+    <FilesMatch "\.php$">
+        Require all denied
+    </FilesMatch>
+</DirectoryMatch>
+
+# 9. Cache control file sensitif
+<FilesMatch "\.(php|env|ini|log|conf)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+</FilesMatch>
+
+############################################
+# END SECURITY SHIELD
+############################################
