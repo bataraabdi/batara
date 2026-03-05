@@ -1,690 +1,1046 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batara - Digital Creator</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #FFD700;
-            --secondary-color: #FFA500;
-            --accent-color: #FF8C00;
-            --dark-color: #121212;
-            --darker-color: #0a0a0a;
-            --light-color: #f8f9fa;
-            --gray-color: #a1a1aa;
-            --border-color: #2a2a2a;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--darker-color);
-            color: var(--light-color);
-            overflow-x: hidden;
-        }
-        
-        /* Canvas Background */
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.8;
-        }
-        
-        canvas {
-            display: block;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-        }
-        
-        .hero-content {
-            text-align: center;
-        }
-        
-        .hero-content h1 {
-    font-size: 4rem;
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(to right, #FFD700, #FFA500, #FF8C00);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.02em;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Batara Building – Blog, Web Static/Portfolio, SEO, Customize And Optimize Social Media, Design Graphic. Solusi digital terpadu untuk meningkatkan citra online dan pertumbuhan bisnis Anda." />
+  <meta name="keywords" content="Batara, Web Development, SEO, Graphic Design, Social Media, Portfolio, Blogspot, Wordpress" />
+  <meta property="og:title" content="Batara Building – Digital Solutions" />
+  <meta property="og:description" content="Solusi digital terpadu untuk meningkatkan citra online dan pertumbuhan bisnis Anda." />
+  <meta property="og:type" content="website" />
+  <title>Batara Digital Solutions</title>
+
+  <!-- Favicon multi-browser support -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23050505'/%3E%3Crect x='8' y='8' width='48' height='48' fill='none' stroke='%23c9a84c' stroke-width='2' transform='rotate(45 32 32)'/%3E%3Crect x='20' y='20' width='24' height='24' fill='%23c9a84c' transform='rotate(45 32 32)'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABJElEQVR4nO2WMQrCQBBFX0BE8AYWXsDGO3gAb+ANPIKNhYWFpYVYKOIBPIAnsBMsgj/wBp7ALGxhFkJgF3azSWYX8sFAwc2bmZ/dJAucc845F1wLYA+cgDtwATbAMlVgBeyAK3ADzsAKmKcKtIEdcAROwAHYA0ugSBS4ARvgDBwTBSRJkqTvFkCXbF6WZdEBWuc8gHXOA1jnPIB1zgNY5zyAdc4DWOc8gHXOA1jnPIB1zgNY5zyAdc4DWOc8gHXOA1jnPIB1zgNY5zyAdc4DWOc8gHXOA1jnPIB1zgNY5zyAdc4DWOc8gHXOA1jnPIB1zgNY5zyAdc4DWOc8gHXOA1jnPIB1zgNY5zyAdc4DWOc8gHXOA1jnPIB1zgNY5zyAdc4DWOc8gHXOA1jnPIB1zgNY5zyAdS8exjCdZfuHkwAAAABJRU5ErkJggg==" />
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%23050505'/%3E%3Crect x='20' y='20' width='140' height='140' fill='none' stroke='%23c9a84c' stroke-width='5' transform='rotate(45 90 90)'/%3E%3Crect x='55' y='55' width='70' height='70' fill='%23c9a84c' transform='rotate(45 90 90)'/%3E%3C/svg%3E" />
+  <meta name="msapplication-TileColor" content="#050505" />
+  <meta name="msapplication-TileImage" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 144 144'%3E%3Crect width='144' height='144' fill='%23050505'/%3E%3Crect x='16' y='16' width='112' height='112' fill='none' stroke='%23c9a84c' stroke-width='4' transform='rotate(45 72 72)'/%3E%3Crect x='44' y='44' width='56' height='56' fill='%23c9a84c' transform='rotate(45 72 72)'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#c9a84c" />
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+  <!-- Font Awesome 5 Free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Rajdhani:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --gold-dim: #7a6020;
+      --black: #050505;
+      --black-2: #0d0d0d;
+      --black-3: #141414;
+      --black-4: #1c1c1c;
+      --white: #f5f0e8;
+      --white-dim: rgba(245,240,232,0.55);
     }
 
-.section-title h2 {
-    font-size: 3rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #FFD700, #FFA500, #FF8C00);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-        
-        .hero-content p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            color: var(--gray-color);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        
-        .tagline {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1.5rem;
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            color: var(--gray-color);
-            margin: 0 0.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none !important; /* Remove underline */
-        }
-        
-        .social-links a:hover {
-            border-color: var(--primary-color);
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-        
-        .btn-explore {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--gray-color);
-            background: transparent;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none; /* Remove underline */
-        }
-        
-        .btn-explore:hover {
-            color: var(--primary-color);
-            text-decoration: none; /* Ensure no underline on hover */
-        }
-        
-        .btn-explore i {
-            transition: transform 0.3s ease;
-        }
-        
-        .btn-explore:hover i {
-            transform: translateY(3px);
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 6rem 0;
-            position: relative;
-            z-index: 5;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title h2 {
-            font-size: 3rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #FFD700, #FFA500, #FF8C00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--gray-color);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card p {
-            color: var(--gray-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-features {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .service-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--gray-color);
-            font-size: 0.9rem;
-        }
-        
-        .service-features li:before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            background: var(--primary-color);
-            border-radius: 50%;
-        }
-        
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            opacity: 0.1;
-            z-index: -1;
-        }
-        
-        .floating-1 {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        .floating-2 {
-            width: 60px;
-            height: 60px;
-            top: 30%;
-            right: 15%;
-            animation: float 10s ease-in-out infinite;
-            animation-delay: 2s;
-        }
-        
-        .floating-3 {
-            width: 40px;
-            height: 40px;
-            bottom: 25%;
-            left: 15%;
-            animation: float 12s ease-in-out infinite;
-            animation-delay: 4s;
-        }
-        
-        .floating-4 {
-            width: 100px;
-            height: 100px;
-            bottom: 15%;
-            right: 10%;
-            animation: float 9s ease-in-out infinite;
-            animation-delay: 6s;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
-        
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 5;
-            text-align: center;
-            color: var(--gray-color);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-                padding: 0 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title p {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
-            
-            .floating-element {
-                display: none;
-            }
-        }
-    </style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    #cursor {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      pointer-events: none;
+    }
+    #cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: absolute; transform: translate(-50%,-50%);
+      transition: width .15s, height .15s, background .2s;
+    }
+    #cursor-ring {
+      width: 34px; height: 34px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      position: absolute; transform: translate(-50%,-50%);
+      transition: width .25s, height .25s, border-color .2s;
+      opacity: .55;
+    }
+    body:hover #cursor-dot { }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+      background-size: 180px;
+      pointer-events: none;
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s, padding .3s;
+    }
+    #navbar.scrolled {
+      background: rgba(5,5,5,.92);
+      backdrop-filter: blur(14px);
+      padding: .8rem 2.5rem;
+      border-bottom: 1px solid rgba(201,168,76,.18);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      border: 1.5px solid var(--gold);
+      transform: rotate(45deg);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-mark::after {
+      content: '';
+      width: 10px; height: 10px;
+      background: var(--gold);
+      transform: rotate(0deg);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      text-decoration: none;
+      position: relative;
+      transition: color .25s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0; height: 1px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: right;
+      transition: transform .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-cta {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .8rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      border: none;
+      padding: .55rem 1.5rem;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      cursor: none;
+      transition: background .25s, color .25s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--gold-light); color: var(--black); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 1.5px;
+      background: var(--gold);
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 999;
+      background: rgba(5,5,5,.97);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem; font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--white); text-decoration: none;
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 7rem 2rem 4rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,168,76,.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201,168,76,.07) 0%, transparent 60%),
+        linear-gradient(180deg, #050505 0%, #0a0a08 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-lines {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .hero-lines::before, .hero-lines::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      top: 0; bottom: 0;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,.25), transparent);
+      animation: lineFade 4s ease-in-out infinite;
+    }
+    .hero-lines::before { left: 20%; animation-delay: 0s; }
+    .hero-lines::after { right: 20%; animation-delay: 2s; }
+    @keyframes lineFade {
+      0%,100% { opacity: 0; transform: scaleY(.3); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .35em; text-transform: uppercase;
+      color: var(--gold);
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp .8s .3s forwards;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; height: 1px; width: 50px; background: var(--gold-dim);
+    }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: .95;
+      letter-spacing: -.01em;
+      margin-bottom: 1.2rem;
+      opacity: 0; animation: fadeUp .9s .5s forwards;
+    }
+    .hero-title .gold { color: var(--gold); }
+    .hero-title .outline {
+      -webkit-text-stroke: 1px rgba(201,168,76,.5);
+      color: transparent;
+    }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--white-dim);
+      line-height: 1.7;
+      max-width: 600px; margin: 0 auto 2.5rem;
+      opacity: 0; animation: fadeUp .9s .7s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .9s .9s forwards;
+    }
+    .btn-gold {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .85rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--black); background: var(--gold);
+      border: none; padding: .85rem 2.4rem;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      cursor: none; text-decoration: none;
+      transition: background .25s, transform .2s;
+      display: inline-block;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); color: var(--black); }
+    .btn-outline {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .85rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); background: transparent;
+      border: 1px solid rgba(201,168,76,.4);
+      padding: .85rem 2.4rem;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      cursor: none; text-decoration: none;
+      transition: border-color .25s, background .25s, transform .2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,.07); transform: translateY(-2px); color: var(--gold); }
+
+    .hero-badge {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .7rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--gold-dim);
+      display: flex; flex-direction: column; align-items: center; gap: .6rem;
+      opacity: 0; animation: fadeUp .8s 1.3s forwards;
+    }
+    .hero-badge-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      animation: lineGrow 1.5s 1.5s ease-out both, pulse 2s 3s infinite;
+    }
+    @keyframes lineGrow { from { height: 0; } to { height: 50px; } }
+    @keyframes pulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid rgba(201,168,76,.12);
+      border-bottom: 1px solid rgba(201,168,76,.12);
+      padding: .9rem 0;
+      background: rgba(201,168,76,.03);
+    }
+    .marquee-track {
+      display: flex; gap: 3rem;
+      animation: marquee 22s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .25em; text-transform: uppercase;
+      color: var(--gold-dim);
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 1.2rem;
+    }
+    .marquee-item::after { content: '◆'; font-size: .5rem; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTION BASE ── */
+    section { position: relative; z-index: 1; }
+    .section-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .4em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .8rem;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .section-title .gold { color: var(--gold); }
+    .section-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-style: italic;
+      color: var(--white-dim); line-height: 1.8;
+    }
+    .divider {
+      width: 60px; height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 1.5rem 0;
+    }
+
+    /* ── ABOUT / INTRO ── */
+    #about {
+      padding: 7rem 0;
+      background: var(--black-2);
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-frame {
+      width: 100%; aspect-ratio: 4/5;
+      border: 1px solid rgba(201,168,76,.2);
+      position: relative; overflow: hidden;
+      background: var(--black-3);
+    }
+    .about-frame-inner {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg, rgba(201,168,76,.05) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(201,168,76,.015) 30px, rgba(201,168,76,.015) 31px);
+    }
+    .about-frame::before {
+      content: 'GNU/LINUX';
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem; font-weight: 600;
+      letter-spacing: .3em; color: rgba(201,168,76,.25);
+      white-space: nowrap;
+    }
+    .about-corner {
+      position: absolute; width: 20px; height: 20px;
+      border-color: var(--gold); border-style: solid;
+    }
+    .about-corner:nth-child(1) { top: -8px; left: -8px; border-width: 1px 0 0 1px; }
+    .about-corner:nth-child(2) { top: -8px; right: -8px; border-width: 1px 1px 0 0; }
+    .about-corner:nth-child(3) { bottom: -8px; left: -8px; border-width: 0 0 1px 1px; }
+    .about-corner:nth-child(4) { bottom: -8px; right: -8px; border-width: 0 1px 1px 0; }
+    .about-badge-float {
+      position: absolute; right: -1.5rem; bottom: 2.5rem;
+      background: var(--gold);
+      padding: 1.2rem 1rem;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+    }
+    .about-badge-float .num {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--black); line-height: 1;
+      display: block; text-align: center;
+    }
+    .about-badge-float .lbl {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(0,0,0,.7);
+      display: block; text-align: center;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .stat-box {
+      border: 1px solid rgba(201,168,76,.15);
+      padding: 1.2rem;
+      background: rgba(201,168,76,.02);
+      transition: border-color .25s, background .25s;
+    }
+    .stat-box:hover { border-color: rgba(201,168,76,.4); background: rgba(201,168,76,.05); }
+    .stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--white-dim);
+      margin-top: .2rem;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 7rem 0;
+      background: var(--black);
+    }
+    .services-header { text-align: center; margin-bottom: 4rem; }
+    .services-header .divider { margin: 1.5rem auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px;
+      background: rgba(201,168,76,.1);
+    }
+    .service-card {
+      background: var(--black-2);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .5s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--black-3); }
+    .service-icon {
+      width: 52px; height: 52px;
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      transition: border-color .25s, background .25s;
+      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    }
+    .service-card:hover .service-icon { border-color: var(--gold); background: rgba(201,168,76,.08); }
+    .service-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem; font-weight: 600;
+      color: var(--white);
+      margin-bottom: .5rem;
+    }
+    .service-tagline {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .service-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic;
+      color: var(--white-dim); line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+    }
+    .service-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .65rem; font-weight: 600;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,.15);
+      padding: .25rem .7rem;
+      transition: border-color .2s, color .2s;
+    }
+    .service-card:hover .service-tag { border-color: rgba(201,168,76,.35); color: var(--gold); }
+    .service-num {
+      position: absolute; top: 1.5rem; right: 2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem; font-weight: 900;
+      color: rgba(201,168,76,.04);
+      line-height: 1; pointer-events: none;
+    }
+
+    /* ── PROCESS ── */
+    #process {
+      padding: 7rem 0;
+      background: var(--black-2);
+    }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; position: relative;
+    }
+    .process-grid::before {
+      content: '';
+      position: absolute; top: 2rem; left: 12.5%; right: 12.5%; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    }
+    .process-step {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .step-num {
+      width: 44px; height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: .85rem; font-weight: 600;
+      color: var(--gold);
+      background: var(--black-2);
+      position: relative; z-index: 1;
+      transition: background .25s, color .25s;
+    }
+    .process-step:hover .step-num { background: var(--gold); color: var(--black); }
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: .95rem; font-weight: 600;
+      color: var(--white); margin-bottom: .5rem;
+    }
+    .step-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .95rem; font-style: italic;
+      color: var(--white-dim); line-height: 1.6;
+    }
+
+    /* ── CTA ── */
+    #cta {
+      padding: 8rem 0;
+      background: var(--black);
+      position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,.07) 0%, transparent 70%);
+    }
+    .cta-inner { text-align: center; position: relative; z-index: 1; }
+    .cta-glyph {
+      font-family: 'Cinzel', serif;
+      font-size: 12rem; font-weight: 900;
+      color: rgba(201,168,76,.03);
+      line-height: 1;
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none; white-space: nowrap;
+    }
+    .cta-inner .section-title { font-size: clamp(2.2rem, 6vw, 4.5rem); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black-2);
+      border-top: 1px solid rgba(201,168,76,.12);
+      padding: 3rem 0 2rem;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-copy {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .75rem; font-weight: 500;
+      letter-spacing: .1em;
+      color: var(--white-dim);
+    }
+    .footer-copy span { color: var(--gold); }
+    .footer-linux {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .25em;
+      color: rgba(201,168,76,.4);
+    }
+    .footer-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .footer-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--white-dim); text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── SOCIAL LINKS ── */
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+    }
+    .social-links a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(201,168,76,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: .9rem;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: border-color .25s, color .25s, background .25s;
+    }
+    .social-links a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,168,76,.08);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s, transform .8s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .8s, transform .8s; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .8s, transform .8s; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 991px) {
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-visual { max-width: 380px; margin: 0 auto; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid::before { display: none; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 575px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      #navbar { padding: 1rem 1.5rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; gap: 1rem; }
+      .hero-badge { display: none; }
+      .social-links { gap: .6rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Canvas Background -->
-    <div id="canvas-container">
-        <canvas id="animation-canvas"></canvas>
+
+<!-- Custom Cursor -->
+<div id="cursor">
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+</div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#cta" onclick="closeMobile()">Contact</a>
+</nav>
+
+<!-- Navbar -->
+<header id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark"></div>
+    BATARA <span>DIGITAL</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta d-none d-lg-inline">Get Started</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Crafted By GNU/Linux</div>
+    <h1 class="hero-title">
+      BATARA<br>
+      <span class="gold">DIGITAL</span><br>
+      <span class="outline">SOLUTIONS</span>
+    </h1>
+    <p class="hero-subtitle">
+      Blog, Web Static &amp; Portfolio, SEO, Social Media Optimization &amp; Graphic Design — Solusi digital untuk meningkatkan citra online dan pertumbuhan bisnis Anda.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-gold">Explore Services</a>
+      <a href="#about" class="btn-outline">Our Story</a>
     </div>
-    
-    <!-- Floating Elements -->
-    <div class="floating-element floating-1"></div>
-    <div class="floating-element floating-2"></div>
-    <div class="floating-element floating-3"></div>
-    <div class="floating-element floating-4"></div>
-    
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <div class="hero-content">
-                        <h1>Batara</h1>
-                        <p>Building Blog, Web Static/Portfolio, SEO, Customize And Optimize Social Media, Design Graphic</p>
-                        <div class="tagline">
-                            <span>CRAFTED BY GNU/LINUX</span>
-                        </div>
-                        <div class="social-links">
-                            <a href="https://wa.me/6285359090206" target="_blank" title="WhatsApp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="https://github.com" target="_blank" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://telegram.me/aliftara" target="_blank" title="LinkedIn">
-                                <i class="fab fa-telegram"></i>
-                            </a>
-                            <a href="mailto:alif.tara@gmail.com" title="Email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                        <a href="#services" class="btn-explore">
-                            <span>Explore Services</span>
-                            <i class="fas fa-arrow-down"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+  </div>
+  <div class="hero-badge">
+    <span>Scroll</span>
+    <div class="hero-badge-line"></div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack">
+    <span class="marquee-item">Web Development</span>
+    <span class="marquee-item">SEO Optimization</span>
+    <span class="marquee-item">Graphic Design</span>
+    <span class="marquee-item">Social Media</span>
+    <span class="marquee-item">Blogspot &amp; WordPress</span>
+    <span class="marquee-item">Brand Identity</span>
+    <span class="marquee-item">Web Static Portfolio</span>
+    <span class="marquee-item">Analytics Setup</span>
+    <span class="marquee-item">Performance Optimization</span>
+    <span class="marquee-item">Content Strategy</span>
+    <span class="marquee-item">Web Development</span>
+    <span class="marquee-item">SEO Optimization</span>
+    <span class="marquee-item">Graphic Design</span>
+    <span class="marquee-item">Social Media</span>
+    <span class="marquee-item">Blogspot &amp; WordPress</span>
+    <span class="marquee-item">Brand Identity</span>
+    <span class="marquee-item">Web Static Portfolio</span>
+    <span class="marquee-item">Analytics Setup</span>
+    <span class="marquee-item">Performance Optimization</span>
+    <span class="marquee-item">Content Strategy</span>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-visual reveal-left">
+        <div class="about-frame">
+          <div class="about-frame-inner"></div>
+          <div class="about-corner"></div>
+          <div class="about-corner"></div>
+          <div class="about-corner"></div>
+          <div class="about-corner"></div>
         </div>
-    </section>
-    
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Services</h2>
-                <p>Solusi digital terpadu untuk meningkatkan citra online dan pertumbuhan bisnis Anda</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Web Development</h3>
-                        <p>Membangun situs dan aplikasi web modern yang responsif dengan teknologi terkini.</p>
-                        <ul class="service-features">
-                            <li>Blogspot</li>
-                            <li>Wordpress</li>
-                            <li>Web Static</li>
-                            <li>Portofolio</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <h3>SEO Optimization</h3>
-                        <p>Meningkatkan visibilitas dan pertumbuhan trafik organik situs Anda.</p>
-                        <ul class="service-features">
-                            <li>Technical SEO</li>
-                            <li>Content Strategy</li>
-                            <li>Performance Optimization</li>
-                            <li>Analytics Setup</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3>Graphic Design</h3>
-                        <p>Menciptakan identitas visual dan pemasaran yang memikat untuk brand Anda.</p>
-                        <ul class="service-features">
-                            <li>Logo Design</li>
-                            <li>Brand Identity</li>
-                            <li>Marketing Materials</li>
-                            <li>Flyer Design</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Social Media</h3>
-                        <p>Mengoptimalkan media sosial Anda agar jangkauan dan interaksi maksimal.</p>
-                        <ul class="service-features">
-                            <li>Content Strategy</li>
-                            <li>Profile Optimization</li>
-                            <li>Analytics Tracking</li>
-                            <li>Brand Consistency</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="about-badge-float">
+          <span class="num">∞</span>
+          <span class="lbl">Projects</span>
         </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Batara. All rights reserved.</p>
+      </div>
+      <div class="about-text reveal-right">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Digital Craftsmanship<br>Forged in <span class="gold">Linux</span></h2>
+        <div class="divider"></div>
+        <p class="section-body">
+          Batara Digital hadir sebagai mitra digital terpercaya — membangun kehadiran online yang kuat, memperindah identitas visual, dan mendorong pertumbuhan organik bisnis anda melalui teknologi terkini berbasis GNU/Linux.
+        </p>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-num">86%</div>
+            <div class="stat-label">Custom Build</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">SEO</div>
+            <div class="stat-label">Driven Growth</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Core Services</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">GNU</div>
+            <div class="stat-label">Linux Powered</div>
+          </div>
         </div>
-    </footer>
-    
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
- <script>
-    $(document).ready(function() {
-        // Canvas setup
-        const canvas = document.getElementById('animation-canvas');
-        const ctx = canvas.getContext('2d');
-        
-        // Set canvas to full window size
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Particle system
-        let particles = [];
-        const particleCount = 80;
-        let animationId;
-        
-        // Mouse position
-        const mouse = {
-            x: canvas.width / 2,
-            y: canvas.height / 2
-        };
-        
-        canvas.addEventListener('mousemove', function(event) {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-        
-        // Particle class
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
-                this.color = `rgba(${Math.floor(Math.random() * 50 + 200)}, 
-                                  ${Math.floor(Math.random() * 150 + 100)}, 
-                                  ${Math.floor(Math.random() * 50)}, 
-                                  ${Math.random() * 0.5 + 0.1})`;
-                this.originalSize = this.size;
-            }
-            
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                // Bounce off edges
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-                
-                // Mouse interaction
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 100) {
-                    this.size = this.originalSize * 2;
-                    const forceDirectionX = dx / distance;
-                    const forceDirectionY = dy / distance;
-                    const force = (100 - distance) / 100;
-                    
-                    this.x -= forceDirectionX * force * 2;
-                    this.y -= forceDirectionY * force * 2;
-                } else {
-                    this.size = this.originalSize;
-                }
-            }
-            
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-        
-        // Initialize particles
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-        
-        initParticles();
-        
-        // Animation loop
-        function animate() {
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                
-                // Connect particles with lines
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 120) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 215, 0, ${0.1 * (1 - distance/120)})`;
-                        ctx.lineWidth = 0.3;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            
-            animationId = requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        // Custom easing function for ultra-smooth scrolling
-        jQuery.easing.smoothEase = function (x, t, b, c, d) {
-            return -c * (t /= d) * (t - 2) + b;
-        };
-        
-        // Ultra smooth scroll to services
-        $('.btn-explore').on('click', function(e) {
-            e.preventDefault();
-            
-            const servicesSection = $('#services');
-            if (servicesSection.length) {
-                $('html, body').animate(
-                    {
-                        scrollTop: servicesSection.offset().top - 80,
-                    },
-                    100, // Slightly longer duration for smoother effect
-                    'smoothEase' // Using our custom easing
-                );
-            }
-        });
-        
-        // Smooth scrolling for other anchor links
-        $('a[href*="#"]').not('.btn-explore').on('click', function(e) {
-            // Skip if it's not an internal link
-            if (location.pathname.replace(/^\//, '') !== this.pathname.replace(/^\//, '') || 
-                location.hostname !== this.hostname) {
-                return;
-            }
-            
-            e.preventDefault();
-            
-            const target = $(this.hash);
-            const targetElement = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            
-            if (targetElement.length) {
-                $('html, body').animate(
-                    {
-                        scrollTop: targetElement.offset().top - 80,
-                    },
-                    600,
-                    'smoothEase'
-                );
-            }
-        });
-        
-        // Enhanced scroll animation for service cards
-        function checkScroll() {
-            const serviceCards = $('.service-card');
-            const windowHeight = $(window).height();
-            const scrollTop = $(window).scrollTop();
-            
-            serviceCards.each(function(index) {
-                const cardTop = $(this).offset().top;
-                
-                if (cardTop < scrollTop + windowHeight - 100) {
-                    setTimeout(() => {
-                        $(this).addClass('visible');
-                    }, index * 150);
-                }
-            });
-        }
-        
-        // Initial check on page load
-        setTimeout(checkScroll, 500);
-        
-        // Check on scroll with throttling for performance
-        let scrollTimeout;
-        $(window).on('scroll', function() {
-            if (!scrollTimeout) {
-                scrollTimeout = setTimeout(function() {
-                    checkScroll();
-                    scrollTimeout = null;
-                }, 50);
-            }
-        });
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our <span class="gold">Services</span></h2>
+      <div class="divider"></div>
+      <p class="section-body" style="max-width:540px;margin:0 auto;">Solusi digital untuk meningkatkan citra online dan pertumbuhan bisnis Anda.</p>
+    </div>
+    <div class="services-grid">
+      <!-- Web Development -->
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">🌐</div>
+        <div class="service-name">Web Development</div>
+        <div class="service-tagline">Modern · Responsive · Fast</div>
+        <p class="service-desc">Membangun situs dan aplikasi web modern yang responsif dengan teknologi terkini — dari Blogspot, WordPress, Web Static hingga portofolio profesional.</p>
+        <div class="service-tags">
+          <span class="service-tag">Blogspot</span>
+          <span class="service-tag">WordPress</span>
+          <span class="service-tag">Web Static</span>
+          <span class="service-tag">Portfolio</span>
+        </div>
+      </div>
+      <!-- SEO -->
+      <div class="service-card reveal" style="transition-delay:.1s">
+        <div class="service-num">02</div>
+        <div class="service-icon">📈</div>
+        <div class="service-name">SEO Optimization</div>
+        <div class="service-tagline">Visibility · Traffic · Growth</div>
+        <p class="service-desc">Meningkatkan visibilitas dan pertumbuhan trafik organik situs Anda dengan strategi SEO menyeluruh dari audit teknis hingga optimasi konten.</p>
+        <div class="service-tags">
+          <span class="service-tag">Technical SEO</span>
+          <span class="service-tag">Content Strategy</span>
+          <span class="service-tag">Performance</span>
+          <span class="service-tag">Analytics</span>
+        </div>
+      </div>
+      <!-- Graphic Design -->
+      <div class="service-card reveal" style="transition-delay:.15s">
+        <div class="service-num">03</div>
+        <div class="service-icon">🎨</div>
+        <div class="service-name">Graphic Design</div>
+        <div class="service-tagline">Identity · Visual · Brand</div>
+        <p class="service-desc">Menciptakan identitas visual dan materi pemasaran yang memikat untuk brand Anda — logo, brand identity, flyer, hingga materi promosi.</p>
+        <div class="service-tags">
+          <span class="service-tag">Logo Design</span>
+          <span class="service-tag">Brand Identity</span>
+          <span class="service-tag">Marketing</span>
+          <span class="service-tag">Flyer Design</span>
+        </div>
+      </div>
+      <!-- Social Media -->
+      <div class="service-card reveal" style="transition-delay:.2s">
+        <div class="service-num">04</div>
+        <div class="service-icon">📱</div>
+        <div class="service-name">Social Media</div>
+        <div class="service-tagline">Reach · Engage · Grow</div>
+        <p class="service-desc">Mengoptimalkan media sosial Anda agar jangkauan dan interaksi maksimal — strategi konten, optimasi profil, analytics, dan konsistensi brand.</p>
+        <div class="service-tags">
+          <span class="service-tag">Content Strategy</span>
+          <span class="service-tag">Profile Optim.</span>
+          <span class="service-tag">Analytics</span>
+          <span class="service-tag">Consistency</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title">The <span class="gold">Process</span></h2>
+      <div class="divider mx-auto"></div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal" style="transition-delay:0s">
+        <div class="step-num">01</div>
+        <div class="step-title">Discovery</div>
+        <p class="step-desc">Memahami kebutuhan, tujuan bisnis, dan target audiens Anda secara mendalam.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.1s">
+        <div class="step-num">02</div>
+        <div class="step-title">Strategy</div>
+        <p class="step-desc">Merancang strategi digital yang terukur dan berorientasi pada hasil nyata.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.2s">
+        <div class="step-num">03</div>
+        <div class="step-title">Execution</div>
+        <p class="step-desc">Mengeksekusi solusi dengan presisi tinggi menggunakan teknologi GNU/Linux terbaik.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.3s">
+        <div class="step-num">04</div>
+        <div class="step-title">Growth</div>
+        <p class="step-desc">Memantau, menganalisis, dan mengoptimalkan untuk pertumbuhan bisnis berkelanjutan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-glyph">B</div>
+      <div class="section-label">Ready To Build?</div>
+      <h2 class="section-title">Start Your <span class="gold">Digital Journey</span></h2>
+      <div class="divider mx-auto mt-3 mb-4"></div>
+      <p class="section-body mb-5" style="max-width:480px;margin-left:auto;margin-right:auto;">
+        Mari wujudkan visi digital Anda bersama Batara Digital — dari konsep hingga kehadiran online yang memukau.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:hello@batara.build" class="btn-gold">Get In Touch</a>
+        <a href="#services" class="btn-outline">View Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="nav-logo mb-2" style="font-size:1.1rem;">
+          <div class="nav-logo-mark" style="width:24px;height:24px;"></div>
+          BATARA <span style="color:var(--white);">DIGITAL</span>
+        </div>
+        <div class="footer-copy">© 2023 <span>Batara</span>. All rights reserved.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#cta">Contact</a></li>
+      </ul>
+      <div class="social-links">
+        <a href="https://wa.me/6285359090206" target="_blank" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://github.com" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://telegram.me/aliftara" target="_blank" title="Telegram">
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/aliftara" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:alif.tara@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <div class="footer-linux">CRAFTED BY GNU/LINUX</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+$(function () {
+
+  /* ── Custom Cursor ── */
+  const dot  = $('#cursor-dot')[0];
+  const ring = $('#cursor-ring')[0];
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  $(document).on('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
+  (function animCursor () {
+    rx += (mx - rx) * .12; ry += (my - ry) * .12;
+    dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  })();
+  $('a, button').on('mouseenter', function () {
+    $('#cursor-dot').css({ width: '14px', height: '14px' });
+    $('#cursor-ring').css({ width: '48px', height: '48px', borderColor: 'var(--gold-light)', opacity: '.8' });
+  }).on('mouseleave', function () {
+    $('#cursor-dot').css({ width: '8px', height: '8px' });
+    $('#cursor-ring').css({ width: '34px', height: '34px', borderColor: 'var(--gold)', opacity: '.55' });
+  });
+
+  /* ── Navbar Scroll ── */
+  $(window).on('scroll', function () {
+    if ($(this).scrollTop() > 60) $('#navbar').addClass('scrolled');
+    else $('#navbar').removeClass('scrolled');
+  });
+
+  /* ── Hamburger ── */
+  $('#hamburger').on('click', function () {
+    $(this).toggleClass('open');
+    $('#mobileMenu').toggleClass('open');
+  });
+  window.closeMobile = function () {
+    $('#hamburger').removeClass('open');
+    $('#mobileMenu').removeClass('open');
+  };
+
+  /* ── Scroll Reveal ── */
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        $(e.target).addClass('visible');
+        observer.unobserve(e.target);
+      }
     });
+  }, { threshold: 0.12 });
+  $('.reveal, .reveal-left, .reveal-right').each(function () { observer.observe(this); });
+
+  /* ── Smooth anchor scroll ── */
+  $('a[href^="#"]').on('click', function (e) {
+    const target = $(this.getAttribute('href'));
+    if (target.length) {
+      e.preventDefault();
+      $('html, body').animate({ scrollTop: target.offset().top - 70 }, 700, 'swing');
+    }
+  });
+
+});
 </script>
 </body>
 </html>
